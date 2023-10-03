@@ -172,11 +172,12 @@
                         android:textSize="14sp"/>
 
                     <TextView
+                        android:id="@+id/tv_editProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
                         android:textColor="@color/teal"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -340,46 +341,48 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/nav_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:background="@color/white"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/history"/>
+                android:src="@drawable/history" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="History"
                 android:textColor="@color/grey"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_report"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:background="@color/white"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/report"/>
+                android:src="@drawable/report" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Report"
                 android:textColor="@color/grey"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
