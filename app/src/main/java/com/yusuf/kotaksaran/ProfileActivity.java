@@ -30,7 +30,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent a = new Intent(ProfileActivity.this, HistoryActivity.class);
                 startActivity(a);
-                finish();
             }
         });
 
@@ -39,7 +38,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent b = new Intent(ProfileActivity.this, MainActivity.class);
                 startActivity(b);
-                finish();
             }
         });
 
@@ -48,7 +46,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent c = new Intent(ProfileActivity.this, EditActivity.class);
                 startActivity(c);
-                finish();
             }
         });
 

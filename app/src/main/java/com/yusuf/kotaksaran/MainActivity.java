@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent a= new Intent(MainActivity.this, HistoryActivity.class);
                 startActivity(a);
-                finish();
             }
         });
 
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent b= new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(b);
-                finish();
             }
         });
     }
