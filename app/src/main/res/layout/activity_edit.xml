@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/arrow" />
+            android:src="@drawable/ic_arrow" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -188,9 +188,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="30dp">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/bt_changeprofile"
@@ -200,7 +198,9 @@
             android:text="Save Change"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="30dp"/>
 
     </LinearLayout>
 

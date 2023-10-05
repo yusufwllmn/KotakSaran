@@ -26,7 +26,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/filter"/>
+            android:src="@drawable/ic_filter"/>
 
     </LinearLayout>
 
@@ -69,7 +69,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/history_teal"/>
+                android:src="@drawable/ic_history_teal"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/report" />
+                android:src="@drawable/ic_report" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/profile" />
+                android:src="@drawable/ic_profile" />
 
             <TextView
                 android:layout_width="wrap_content"
