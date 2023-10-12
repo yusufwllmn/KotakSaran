@@ -50,7 +50,6 @@
                     android:scrollbars="vertical"
                     tools:listitem="@layout/report_item"/>
 
-
             </LinearLayout>
 
     <LinearLayout
