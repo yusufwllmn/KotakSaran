@@ -33,10 +33,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@color/white"
-        android:layout_weight="1"
         android:paddingHorizontal="20dp">
 
         <LinearLayout
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Subject"
+                android:text="Subjek"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -58,51 +58,12 @@
                 android:layout_height="45dp"
                 android:background="@drawable/background_input"
                 android:drawablePadding="12dp"
-                android:hint="Enter Subject"
+                android:hint="Masukkan subjek"
                 android:padding="12dp"
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="25dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Report"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/background_input"
-                android:drawablePadding="12dp"
-                android:gravity="left"
-                android:hint="Enter your report here"
-                android:padding="12dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:textSize="14sp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="0/500"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
-                android:layout_gravity="right"/>
 
         </LinearLayout>
 
@@ -116,23 +77,62 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Report Document"
+                android:text="Aspirasi"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_input"
+                android:drawablePadding="12dp"
+                android:gravity="left"
+                android:hint="Masukkan aspirasi anda disini"
+                android:padding="12dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="5dp"
+                android:text="0/500"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Dokumen pendukung"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_tv_file"
-                    android:text="Choose File"
                     android:padding="12dp"
+                    android:text="Choose File"
                     android:textColor="@color/grey"
                     android:textSize="14sp" />
 
@@ -140,11 +140,11 @@
                     android:layout_width="100dp"
                     android:layout_height="45dp"
                     android:background="@drawable/background_bt_file"
-                    android:text="Browse"
-                    android:textSize="16sp"
                     android:gravity="center"
+                    android:text="Browse"
+                    android:textAllCaps="false"
                     android:textColor="@color/grey"
-                    android:textAllCaps="false"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -154,10 +154,10 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/background_button"
-            android:text="Submit"
-            android:textSize="16sp"
+            android:text="Kirim"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textAllCaps="false"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -183,7 +183,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History"
+                android:text="Riwayat"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
 
@@ -205,7 +205,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Report"
+                android:text="Aspirasi"
                 android:textColor="@color/teal"
                 android:textSize="16sp"/>
 
@@ -228,7 +228,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="Profil"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
 

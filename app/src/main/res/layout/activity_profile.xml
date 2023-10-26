@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Account"
+            android:text="Profil Akun"
             android:textStyle="normal"
             android:textColor="@color/black"
             android:textSize="16sp"/>
@@ -64,7 +64,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Account Information"
+                        android:text="Informasi Akun"
                         android:textColor="@color/grey_dark"
                         android:layout_marginLeft="10dp"
                         android:textSize="14sp"/>
@@ -86,7 +86,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit"
+                        android:text="Ubah"
                         android:textColor="@color/teal"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"/>
@@ -165,7 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Personal Identity"
+                        android:text="Identitas Diri"
                         android:textColor="@color/grey_dark"
                         android:layout_weight="1"
                         android:layout_marginLeft="10dp"
@@ -175,7 +175,7 @@
                         android:id="@+id/tv_editProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit"
+                        android:text="Ubah"
                         android:textColor="@color/teal"
                         android:textSize="14sp" />
 
@@ -215,7 +215,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name"
+                        android:text="Nama Lengkap"
                         android:textColor="@color/grey"
                         android:textSize="14sp"/>
 
@@ -239,7 +239,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Category"
+                        android:text="Kategori"
                         android:textColor="@color/grey"
                         android:textSize="14sp"/>
 
@@ -263,7 +263,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Address"
+                        android:text="Alamat"
                         android:textColor="@color/grey"
                         android:textSize="14sp"/>
 
@@ -287,7 +287,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Telephone"
+                        android:text="No. Handphone"
                         android:textColor="@color/grey"
                         android:textSize="14sp"/>
 
@@ -312,7 +312,7 @@
                 android:drawableRight="@drawable/ic_door_exit"
                 android:gravity="left|center_vertical"
                 android:paddingHorizontal="15dp"
-                android:text="Logout"
+                android:text="Keluar Akun"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -326,7 +326,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Application Version 1.0.0"
+                    android:text="Versi Aplikasi 1.0.0"
                     android:textColor="@color/grey_dark"
                     android:textSize="12sp"/>
 
@@ -358,7 +358,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History"
+                android:text="Riwayat"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
 
@@ -381,7 +381,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Report"
+                android:text="Aspirasi"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
 
@@ -403,7 +403,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="Profil"
                 android:textColor="@color/teal"
                 android:textSize="16sp"/>
 

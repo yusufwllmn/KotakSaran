@@ -11,6 +11,7 @@
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_info.xml" value="0.1825" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_input.xml" value="0.1825" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_logo.xml" value="0.1825" />
+        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_red_info.xml" value="0.157" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_tv_file.xml" value="0.1825" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/background_yellow_info.xml" value="0.1825" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.157" />
@@ -25,13 +26,13 @@
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/drawable/ic_profile_teal.xml" value="0.1825" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_edit.xml" value="0.25" />
-        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_history.xml" value="0.25" />
+        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_history.xml" value="0.1" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_regist.xml" value="0.31351351351351353" />
+        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_regist.xml" value="0.2" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/activity_register.xml" value="0.20394736842105263" />
-        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/report_item.xml" value="0.33" />
+        <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/layout/report_item.xml" value="0.22" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/xml/file_paths.xml" value="0.31351351351351353" />
         <entry key="..\:/Tugas/kelas_12/Android_Studio/KotakSaran/app/src/main/res/xml/network_security_config.xml" value="0.31261261261261264" />
       </map>

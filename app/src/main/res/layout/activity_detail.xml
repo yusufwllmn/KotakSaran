@@ -31,34 +31,37 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="@integer/material_motion_duration_long_1"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_det_subjek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Subject"
                 android:textColor="@color/black"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/tv_det_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="01 - 01 -2001"
                 android:textColor="@color/black"
-                android:textSize="10dp"
-                android:layout_marginTop="5dp"/>
+                android:textSize="10dp" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_det_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_green_info"
+            android:padding="10dp"
             android:text="accepted"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:padding="10dp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -68,20 +71,22 @@
         android:orientation="vertical">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Report Text"
-        android:textSize="12sp"
-        android:textColor="@color/black"
-            android:layout_marginTop="25dp"/>
-
-        <TextView
+            android:id="@+id/tv_det_isi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Document name"
-            android:textSize="12sp"
+            android:layout_marginTop="25dp"
+            android:text="Report Text"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"/>
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_det_dokumen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Document name"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
     </LinearLayout>
     

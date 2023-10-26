@@ -19,31 +19,34 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/tv_subjek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subject"
+                android:layout_weight="1"
+                android:text="Subjek"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_weight="1"/>
+                android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/background_green_info"
+                android:padding="5dp"
                 android:text="accepted"
                 android:textColor="@color/white"
-                android:textSize="10sp"
-                android:padding="5dp"
-                android:layout_marginRight="10dp"/>
+                android:textSize="10sp" />
 
             <TextView
+                android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
                 android:text="01 - 01 - 2001"
                 android:textColor="@color/grey"
-                android:textSize="10sp"
-                android:padding="5dp"
-                android:layout_marginRight="10dp"/>
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -54,11 +57,12 @@
             android:layout_marginTop="5dp">
 
             <TextView
+                android:id="@+id/tv_isi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Report Text"
+                android:text="isi aspirasi"
                 android:textColor="@color/black"
-                android:textSize="10sp"/>
+                android:textSize="10sp" />
 
 
 

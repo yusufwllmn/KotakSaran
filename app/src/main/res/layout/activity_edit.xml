@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Account"
+            android:text="Ubah Profil"
             android:textStyle="normal"
             android:textColor="@color/black"
             android:textSize="16sp"/>
@@ -67,7 +67,7 @@
                     android:layout_height="45dp"
                     android:background="@drawable/background_input"
                     android:drawablePadding="12dp"
-                    android:hint="Enter your ID ( NIK / NIP / NIS )"
+                    android:hint="Masukkan ID ( NIK / NIP / NIS )"
                     android:padding="12dp"
                     android:text=""
                     android:textColor="@color/black"
@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
-                    android:text="Name"
+                    android:text="Nama Lengkap"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -94,7 +94,7 @@
                     android:layout_height="45dp"
                     android:background="@drawable/background_input"
                     android:drawablePadding="12dp"
-                    android:hint="Enter your name"
+                    android:hint="Masukkan nama lengkap anda"
                     android:padding="12dp"
                     android:text=""
                     android:textColor="@color/black"
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
-                    android:text="Category"
+                    android:text="Kategori"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -121,7 +121,7 @@
                     android:layout_height="45dp"
                     android:background="@drawable/background_input"
                     android:drawablePadding="12dp"
-                    android:hint="category"
+                    android:hint="Kategori"
                     android:padding="12dp"
                     android:text=""
                     android:textColor="@color/black"
@@ -139,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
-                    android:text="Address"
+                    android:text="Alamat"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -148,7 +148,7 @@
                     android:layout_height="45dp"
                     android:background="@drawable/background_input"
                     android:drawablePadding="12dp"
-                    android:hint="Enter your address"
+                    android:hint="Masukkan alamat anda"
                     android:padding="12dp"
                     android:text=""
                     android:textColor="@color/black"
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="6dp"
-                    android:text="Telephone"
+                    android:text="No. Handphone"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -174,7 +174,7 @@
                     android:layout_height="45dp"
                     android:background="@drawable/background_input"
                     android:drawablePadding="12dp"
-                    android:hint="Enter your telephone number"
+                    android:hint="Masukkan no. handphone anda"
                     android:padding="12dp"
                     android:text=""
                     android:textColor="@color/black"
@@ -195,7 +195,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/background_button"
-            android:text="Save Change"
+            android:text="Simpan"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
