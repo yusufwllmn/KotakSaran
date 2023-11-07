@@ -1,5 +1,5 @@
-package com.yusuf.kotaksaran.rest;
-import com.yusuf.kotaksaran.config.Config;
+package com.yusuf.kotaksaran.Rest;
+import com.yusuf.kotaksaran.Config.Config;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

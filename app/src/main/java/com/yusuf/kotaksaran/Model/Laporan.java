@@ -1,19 +1,19 @@
-package com.yusuf.kotaksaran.lapor;
-
-import android.telephony.mbms.StreamingServiceInfo;
+package com.yusuf.kotaksaran.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Notes {
+import java.util.List;
+
+public class Laporan {
     private String id_laporan;
-    private String subjek_laporan;
+    private List<Subjek> subjek_laporan;
     private String isi_laporan;
     private String tanggal_lapor;
-    private String id_status;
+    private List<Status> id_status;
     private String dokumen;
-    private String id_pelapor;
+    private List<User> id_pelapor;
 
-    public Notes(String id_laporan, String subjek_laporan, String isi_laporan, String tanggal_lapor, String id_status, String dokumen, String id_pelapor){
+    public Laporan(String id_laporan, List<Subjek> subjek_laporan, String isi_laporan, String tanggal_lapor, List<Status> id_status, String dokumen, List<User> id_pelapor){
         this.id_laporan = id_laporan;
         this.subjek_laporan = subjek_laporan;
         this.isi_laporan= isi_laporan;
@@ -28,10 +28,10 @@ public class Notes {
     public void setId_laporan(String id_laporan) {this.id_laporan = id_laporan;}
 
     @SerializedName("subjek_laporan")
-    public String getSubjek_laporan() {return subjek_laporan;}
-    public void setSubjek_laporan(String subjek_laporan) {this.subjek_laporan = subjek_laporan;}
+    public List<Subjek> getSubjek_laporan() {return subjek_laporan;}
+    public void setSubjek_laporan(List<Subjek> subjek_laporan) {this.subjek_laporan = subjek_laporan;}
 
-    @SerializedName("isis_laporan")
+    @SerializedName("isi_laporan")
     public String getIsi_laporan() {return isi_laporan;}
     public void setIsi_laporan(String isi_laporan) {this.isi_laporan = isi_laporan;}
 
@@ -40,14 +40,14 @@ public class Notes {
     public void setTanggal_lapor(String tanggal_lapor) {this.tanggal_lapor = tanggal_lapor;}
 
     @SerializedName("id_status")
-    public String getId_status() {return id_status;}
-    public void setId_status(String id_status) {this.id_status = id_status;}
+    public List<Status> getId_status() {return id_status;}
+    public void setId_status(List<Status> status) {this.id_status = id_status;}
 
     @SerializedName("dokumen")
     public String getDokumen() {return dokumen;}
     public void setDokumen(String dokumen) {this.dokumen = dokumen;}
 
     @SerializedName("id_pelapor")
-    public String getId_pelapor() {return id_pelapor;}
-    public void setId_pelapor(String id_pelapor) {this.id_pelapor = id_pelapor;}
+    public List<User> getId_pelapor() {return id_pelapor;}
+    public void setId_pelapor(List<User> id_pelapor) {this.id_pelapor = id_pelapor;}
 }
