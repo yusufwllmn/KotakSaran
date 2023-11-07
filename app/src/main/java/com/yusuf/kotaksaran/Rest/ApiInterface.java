@@ -6,7 +6,7 @@ import retrofit2.Call;
 
 public interface ApiInterface {
 
-    @GET("laporan")
-    Call<ServerResponse> getLaporan;
+//    @GET("laporan")
+//    Call<ServerResponse> getLaporan;
 
 }
