@@ -53,13 +53,14 @@
                 android:layout_marginBottom="6dp"/>
 
             <EditText
+                android:id="@+id/et_registerEmail"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/background_input"
                 android:drawableLeft="@drawable/ic_mail"
                 android:drawablePadding="12dp"
-                android:padding="12dp"
                 android:hint="Masukkan email"
+                android:padding="12dp"
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
@@ -81,13 +82,14 @@
                 android:layout_marginBottom="6dp"/>
 
             <EditText
+                android:id="@+id/et_registerPassword"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/background_input"
                 android:drawableLeft="@drawable/ic_key"
                 android:drawablePadding="12dp"
-                android:padding="12dp"
                 android:hint="Masukkan password"
+                android:padding="12dp"
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"

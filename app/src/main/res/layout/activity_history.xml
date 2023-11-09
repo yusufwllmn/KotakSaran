@@ -48,7 +48,7 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="20dp"
                     android:scrollbars="vertical"
-                    tools:listitem="@layout/report_item"/>
+                    tools:listitem="@layout/report_item" />
 
             </LinearLayout>
 

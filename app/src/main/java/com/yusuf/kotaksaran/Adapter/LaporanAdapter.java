@@ -135,8 +135,6 @@ public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListVie
         return listLaporan.size();
     }
 
-
-
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
 

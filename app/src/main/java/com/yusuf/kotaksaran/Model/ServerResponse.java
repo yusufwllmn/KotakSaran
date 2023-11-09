@@ -4,19 +4,19 @@ import java.util.List;
 
 public class ServerResponse {
     private String message;
-    List<Laporan> laporan;
+    private List<Laporan> laporan;
+    private List<User> user;
+    private List<Pelapor> pelapor;
 
-    public String getMessage() {
-        return message;
-    }
+    public String getMessage() {return message;}
+    public void setMessage(String message) {this.message = message;}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    public List<Laporan> getLaporan() {return laporan;}
+    public void setLaporan(List<Laporan> laporan) {this.laporan = laporan;}
 
-    public List<Laporan> getLaporan() {return laporan; }
+    public List<User> getUser() {return user;}
+    public void setUser(List<User> user) {this.user = user;}
 
-    public void setLaporan(List<Laporan> laporan) {
-        this.laporan = laporan;
-    }
+    public List<Pelapor> getPelapor() {return pelapor;}
+    public void setPelapor(List<Pelapor> pelapor) {this.pelapor = pelapor;}
 }

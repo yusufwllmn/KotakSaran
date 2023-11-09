@@ -57,6 +57,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/et_loginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/background_input"
@@ -85,6 +86,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/et_loginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/background_input"
