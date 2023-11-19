@@ -1,29 +1,97 @@
 package com.yusuf.kotaksaran;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.yusuf.kotaksaran.Auth.AuthManager;
+import com.yusuf.kotaksaran.Model.Kategori;
+import com.yusuf.kotaksaran.Model.Laporan;
+import com.yusuf.kotaksaran.Model.Pelapor;
+import com.yusuf.kotaksaran.Model.ServerResponse;
+import com.yusuf.kotaksaran.Model.Status;
+import com.yusuf.kotaksaran.Model.Subjek;
+import com.yusuf.kotaksaran.Model.User;
+import com.yusuf.kotaksaran.Rest.ApiClient;
+import com.yusuf.kotaksaran.Rest.ApiInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
     LinearLayout navHistory, navReport;
-    TextView tvEdit;
+    TextView tvEdit, tvEmail, tvId, tvPassword, tvNama, tvKategori, tvAlamat, tvTelephone;
     Button btnLogout;
+
+    ApiInterface mApiInterface;
+    AuthManager authManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        authManager = new AuthManager(ProfileActivity.this);
+        String accessToken = authManager.getAccessToken();
 
         navHistory = findViewById(R.id.nav_history);
         navReport = findViewById(R.id.nav_report);
         tvEdit = findViewById(R.id.tv_editProfile);
         btnLogout = findViewById(R.id.bt_logout);
+        tvEmail = findViewById(R.id.tv_p_email);
+        tvId = findViewById(R.id.tv_p_id);
+        tvPassword = findViewById(R.id.tv_p_password);
+        tvNama = findViewById(R.id.tv_p_nama);
+        tvKategori = findViewById(R.id.tv_p_kategori);
+        tvAlamat = findViewById(R.id.tv_p_alamat);
+        tvTelephone = findViewById(R.id.tv_p_telephone);
+
+        Call<ServerResponse> pelaporCall = mApiInterface.getPelapor("Bearer " + accessToken);
+        pelaporCall.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                if (response != null && response.isSuccessful()) {
+                    ServerResponse serverResponse = response.body();
+                    if (serverResponse != null) {
+                        Pelapor pelapor = serverResponse.getPelapor();
+                        if (pelapor != null) {
+                            User user = pelapor.getUser();
+                            tvEmail.setText(user.getEmail());
+                            tvId.setText(pelapor.getId_identitas());
+                            tvNama.setText(pelapor.getNama());
+                            Kategori kategori = pelapor.getkategori();
+                            tvKategori.setText(kategori.getKategori());
+                            tvAlamat.setText(pelapor.getAlamat());
+                            tvTelephone.setText(pelapor.getTelephone());
+                        } else {
+                            Toast.makeText(ProfileActivity.this, "Data Pelapor Tidak Tersedia", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(ProfileActivity.this, "Gagal Menyambungkan dengan Server", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ProfileActivity.this, "Gagal Menyambungkan dengan Server", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, "API call failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         navHistory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +120,26 @@ public class ProfileActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent d = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(d);
-                finish();
+                Call<ServerResponse> logoutCall = mApiInterface.logout("Bearer " + accessToken);
+                logoutCall.enqueue(new Callback<ServerResponse>() {
+                    @Override
+                    public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                        if (response != null && response.isSuccessful()) {
+                            authManager.clearAccessToken();
+                            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                            Toast.makeText(ProfileActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(ProfileActivity.this, "Logout failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ServerResponse> call, Throwable t) {
+                        Toast.makeText(ProfileActivity.this, "Logout failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

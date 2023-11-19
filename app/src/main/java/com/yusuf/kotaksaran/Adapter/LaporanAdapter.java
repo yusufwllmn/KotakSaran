@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -22,13 +23,11 @@ import com.yusuf.kotaksaran.Model.Laporan;
 
 import java.util.List;
 
-public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListViewHolder>{
+public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.ListViewHolder> {
     private List<Laporan> listLaporan;
-
     private OnItemClickCallback onItemClickCallback;
 
-    //Onclick Method
-    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback){
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
@@ -44,21 +43,15 @@ public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        try{
+    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+        try {
             Laporan laporan = listLaporan.get(position);
-            List<Subjek> subjekList = laporan.getSubjek_laporan();
-            if (subjekList != null && subjekList.size() > 0) {
-                Subjek subjek = subjekList.get(0);
-                holder.tvSubjek.setText(subjek.getBagian());
-            }
+            Subjek bagian = laporan.getBagian();
+            holder.tvSubjek.setText(bagian.getBagian());
             holder.tvIsi.setText(laporan.getIsi_laporan());
-
-            List<Status> statusList = laporan.getId_status();
-            if (statusList != null && statusList.size() > 0) {
-                Status status = statusList.get(0);
+            Status status = laporan.getStatus();
+            if (status != null) {
                 holder.tvStatus.setText(status.getStatus());
-
                 String statusValue = status.getStatus();
                 if ("diterima".equals(statusValue)) {
                     Drawable greenBackground = ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.background_green_info);
@@ -73,33 +66,28 @@ public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListVie
             }
             holder.tvTanggal.setText(laporan.getTanggal_lapor());
 
-            holder.itemView.setOnClickListener(v -> {
-                showBottomSheetDialog(holder.itemView.getContext(), listLaporan.get(holder.getAdapterPosition()));
-            });
-        }catch (Exception ex){
-            Log.d("ini eksepsi",ex.toString());
+            holder.itemView.setOnClickListener(v -> showBottomSheetDialog(holder.itemView.getContext(), listLaporan.get(holder.getAdapterPosition())));
+
+        } catch (Exception ex) {
+            Log.d("ini eksepsi", ex.toString());
         }
     }
 
     private void showBottomSheetDialog(Context context, Laporan laporan) {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.report_item, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetDialogTheme);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_detail, null);
         bottomSheetDialog.setContentView(view);
 
         TextView tvDetSubjek = view.findViewById(R.id.tv_det_subjek);
-        List<Subjek> subjekList = laporan.getSubjek_laporan();
-        if (subjekList != null && subjekList.size() > 0) {
-            Subjek subjek = subjekList.get(0);
-            tvDetSubjek.setText(subjek.getBagian());
-        }
+        Subjek bagian = laporan.getBagian();
+        tvDetSubjek.setText(bagian.getBagian());
 
         TextView tvDetTanggal = view.findViewById(R.id.tv_det_tanggal);
         tvDetTanggal.setText(laporan.getTanggal_lapor());
 
         TextView tvDetStatus = view.findViewById(R.id.tv_det_status);
-        List<Status> statusList = laporan.getId_status();
-        if (statusList != null && statusList.size() > 0) {
-            Status status = statusList.get(0);
+        Status status = laporan.getStatus();
+        if (status != null) {
             tvDetStatus.setText(status.getStatus());
 
             String statusValue = status.getStatus();
@@ -129,7 +117,6 @@ public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListVie
         bottomSheetDialog.show();
     }
 
-
     @Override
     public int getItemCount() {
         return listLaporan.size();
@@ -137,18 +124,13 @@ public class LaporanAdapter extends  RecyclerView.Adapter<LaporanAdapter.ListVie
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
 
-
         TextView tvSubjek, tvIsi, tvTanggal, tvStatus;
-        public int count;
-        public TextView mCount;
-        public Button bttambah;
-        public Button btnIncrement,btnDecrement;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             tvSubjek = itemView.findViewById(R.id.tv_subjek);
             tvIsi = itemView.findViewById(R.id.tv_isi);
-            tvTanggal  = itemView.findViewById(R.id.tv_tanggal);
+            tvTanggal = itemView.findViewById(R.id.tv_tanggal);
             tvStatus = itemView.findViewById(R.id.tv_status);
         }
     }

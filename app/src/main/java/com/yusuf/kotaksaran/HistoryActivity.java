@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yusuf.kotaksaran.Adapter.LaporanAdapter;
+import com.yusuf.kotaksaran.Auth.AuthManager;
 import com.yusuf.kotaksaran.Model.Laporan;
 import com.yusuf.kotaksaran.Model.ServerResponse;
 import com.yusuf.kotaksaran.Model.Status;
@@ -34,6 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
     ApiInterface mApiInterface;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
+    AuthManager authManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class HistoryActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        authManager = new AuthManager(HistoryActivity.this);
+        String accessToken = authManager.getAccessToken();
 
         navReport = findViewById(R.id.nav_report);
         navProfile = findViewById(R.id.nav_profile);
@@ -63,75 +67,41 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-        data();
-    }
-
-//    public void data() {
-//        Call<ServerResponse> LaporanCall = mApiInterface.getLaporan();
-//        LaporanCall.enqueue(new Callback<ServerResponse>() {
-//            @Override
-//            public void onResponse(Call<ServerResponse> call, retrofit2.Response<ServerResponse> response) {
-//                List<Laporan> laporanList = response.body().getLaporan();
-//                Log.d("Retrofit Get", "Jumlah data Petugas: " + String.valueOf(laporanList.size()));
-//                LaporanAdapter laporanAdapter = new LaporanAdapter(laporanList);
-//                mRecyclerView.setAdapter(laporanAdapter);
-////                Onclick
-////                listAccountPetugasAdapter.setOnItemClickCallback(data -> showSelectedCoffeeDrink(data));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ServerResponse> call, Throwable t) {
-//                Log.e("Retrofit Get", t.toString());
-//                AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this);
-//                builder.setMessage(t.getMessage());
-//                builder.show();
-//            }
-//        });
-//    }
-
-    public void data() {
-        Call<ServerResponse> LaporanCall = mApiInterface.getLaporan();
-        LaporanCall.enqueue(new Callback<ServerResponse>() {
+        Call<ServerResponse> laporanCall = mApiInterface.getLaporan("Bearer " + accessToken);
+        laporanCall.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                List<Laporan> laporanList = response.body().getLaporan();
-                Log.d("Retrofit Get", "Jumlah data laporan: " + String.valueOf(laporanList.size()));
+                if (response != null && response.isSuccessful()) {
+                    ServerResponse serverResponse = response.body();
+                    if (serverResponse != null) {
+                        List<Laporan> laporanList = serverResponse.getLaporan();
 
-                for (Laporan laporan : laporanList) {
+                        if (laporanList != null && !laporanList.isEmpty()) {
+                            Log.d("Retrofit Get", "Jumlah data laporan: " + laporanList.size());
 
-                    List<Subjek> subjekList = laporan.getSubjek_laporan();
-                    for (Subjek subjek_laporan : subjekList) {
-                        String subjek = subjek_laporan.getBagian();
+                            LaporanAdapter laporanAdapter = new LaporanAdapter(laporanList);
+                            mRecyclerView.setAdapter(laporanAdapter);
+
+                        } else {
+                            Log.d("Retrofit Get", "Tidak ada data laporan.");
+                        }
+                    } else {
+                        Log.e("Retrofit Get", "Respons null");
                     }
-
-                    String isi_laporan = laporan.getIsi_laporan();
-
-                    String tanggal_lapor = laporan.getTanggal_lapor();
-
-                    List<Status> statusList = laporan.getId_status();
-                    for (Status statusInfo : statusList) {
-                        String status = statusInfo.getStatus();
-                    }
-
-                    String dokumen = laporan.getDokumen();
-
-                    List<User> userList = laporan.getId_pelapor();
-                    for (User userDetail : userList) {
-                        String id_user = userDetail.getId_user();
-                    }
+                } else {
+                    Log.e("Retrofit Get", "Respons tidak berhasil atau null");
                 }
-
-                LaporanAdapter laporanAdapter = new LaporanAdapter(laporanList);
-                mRecyclerView.setAdapter(laporanAdapter);
             }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Log.e("Retrofit Get", t.toString());
+                Log.e("Retrofit Get", "Gagal melakukan panggilan API: " + t.getLocalizedMessage());
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this);
-                builder.setMessage(t.getMessage());
+                builder.setMessage("Gagal melakukan panggilan API: " + t.getLocalizedMessage());
                 builder.show();
             }
         });
     }
+
 }

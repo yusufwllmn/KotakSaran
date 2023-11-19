@@ -8,21 +8,21 @@ public class Pelapor {
     private String id_pelapor;
     private String id_identitas;
     private String nama;
-    private List<Kategori> id_kategori;
+    private Kategori kategori;
     private String alamat;
     private String telephone;
     private String avatar;
-    private List<User> id_user;
+    private User user;
 
-    public Pelapor(String id_pelapor, String id_identitas, String nama, List<Kategori> id_kategori, String alamat, String telephone, String avatar, List<User> id_user){
+    public Pelapor(String id_pelapor, String id_identitas, String nama, Kategori kategori, String alamat, String telephone, String avatar, User user){
         this.id_pelapor = id_pelapor;
         this.id_identitas = id_identitas;
         this.nama = nama;
-        this.id_kategori = id_kategori;
+        this.kategori = kategori;
         this.alamat = alamat;
         this.telephone = telephone;
         this.avatar = avatar;
-        this.id_user = id_user;
+        this.user = user;
     }
 
     @SerializedName("id_laporan")
@@ -37,9 +37,9 @@ public class Pelapor {
     public String getNama() {return nama;}
     public void setNama(String nama) {this.nama = nama;}
 
-    @SerializedName("id_kategori")
-    public List<Kategori> getId_kategori() {return id_kategori;}
-    public void setId_kategori(List<Kategori> id_kategori) {this.id_kategori = id_kategori;}
+    @SerializedName("kategori")
+    public Kategori getkategori() {return kategori;}
+    public void setkategori(Kategori kategori) {this.kategori = kategori;}
 
     @SerializedName("alamat")
     public String getAlamat() {return alamat;}
@@ -53,7 +53,7 @@ public class Pelapor {
     public String getAvatar() {return avatar;}
     public void setAvatar(String avatar) {this.avatar = avatar;}
 
-    @SerializedName("id_user")
-    public List<User> getId_user() {return id_user;}
-    public void setId_user(List<User> id_user) {this.id_user = id_user;}
+    @SerializedName("user")
+    public User getUser() {return user;}
+    public void setUser(User user) {this.user = user;}
 }
