@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.yusuf.kotaksaran.Auth.AuthManager;
 import com.yusuf.kotaksaran.Model.Kategori;
@@ -68,13 +69,48 @@ public class ProfileActivity extends AppCompatActivity {
                         Pelapor pelapor = serverResponse.getPelapor();
                         if (pelapor != null) {
                             User user = pelapor.getUser();
-                            tvEmail.setText(user.getEmail());
-                            tvId.setText(pelapor.getId_identitas());
-                            tvNama.setText(pelapor.getNama());
+                            if (user.getEmail() != null) {
+                                tvEmail.setText(user.getEmail());
+                            } else {
+                                tvEmail.setText("Belum dilengkapi");
+                                tvEmail.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
+
+                            if (pelapor.getId_identitas() != null) {
+                                tvId.setText(pelapor.getId_identitas());
+                            } else {
+                                tvId.setText("Belum dilengkapi");
+                                tvId.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
+
+                            if (pelapor.getNama() != null) {
+                                tvNama.setText(pelapor.getNama());
+                            } else {
+                                tvNama.setText("Belum dilengkapi");
+                                tvNama.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
+
                             Kategori kategori = pelapor.getkategori();
-                            tvKategori.setText(kategori.getKategori());
-                            tvAlamat.setText(pelapor.getAlamat());
-                            tvTelephone.setText(pelapor.getTelephone());
+                            if (pelapor.getkategori() != null) {
+                                tvKategori.setText(kategori.getKategori());
+                            } else {
+                                tvKategori.setText("Belum dilengkapi");
+                                tvKategori.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
+
+                            if (pelapor.getAlamat() != null) {
+                                tvAlamat.setText(pelapor.getAlamat());
+                            } else {
+                                tvAlamat.setText("Belum dilengkapi");
+                                tvAlamat.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
+
+                            if (pelapor.getTelephone() != null) {
+                                tvTelephone.setText(pelapor.getTelephone());
+                            } else {
+                                tvTelephone.setText("Belum dilengkapi");
+                                tvTelephone.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
+                            }
                         } else {
                             Toast.makeText(ProfileActivity.this, "Data Pelapor Tidak Tersedia", Toast.LENGTH_SHORT).show();
                         }

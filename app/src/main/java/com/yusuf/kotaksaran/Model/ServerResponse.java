@@ -8,7 +8,10 @@ public class ServerResponse {
     private List<Laporan> laporan;
     private User user;
     private Pelapor pelapor;
-    private List<Kategori> kategori;
+    private List<Subjek> bagian;
+
+    public List<Subjek> getBagian() {return bagian;}
+    public void setBagian(List<Subjek> bagian) {this.bagian = bagian;}
 
     public User getUser() {return user;}
     public void setUser(User user) {this.user = user;}
@@ -24,7 +27,4 @@ public class ServerResponse {
 
     public List<Laporan> getLaporan() {return laporan;}
     public void setLaporan(List<Laporan> laporan) {this.laporan = laporan;}
-
-    public List<Kategori> getKategori() {return kategori;}
-    public void setKategori(List<Kategori> kategori) {this.kategori = kategori;}
 }

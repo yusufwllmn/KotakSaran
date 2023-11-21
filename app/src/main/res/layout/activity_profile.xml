@@ -111,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Yono0218862@gmail.com"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -202,7 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="211115756"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -227,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Yono Mahesa Gunawan"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -252,7 +252,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Student"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -277,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Batujajar"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -302,7 +302,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="087830789187"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 

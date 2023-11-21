@@ -54,11 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.bt_login);
         tvRegister = findViewById(R.id.tv_register);
 
-//        if (!authManager.getAccessToken().isEmpty()) {
-//            String accessToken = authManager.getAccessToken();
-//            attemptAutoLogin(accessToken);
-//        }
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,32 +114,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void attemptAutoLogin(String accessToken) {
-//        Call<ServerResponse> autoLoginCall = mApiInterface.autoLogin("Bearer " + accessToken);
-//
-//        autoLoginCall.enqueue(new Callback<ServerResponse>() {
-//            @Override
-//            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-//                if (response.isSuccessful()) {
-//                    ServerResponse serverResponse = response.body();
-//                    if (serverResponse != null) {
-//                        Toast.makeText(LoginActivity.this, serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    } else {
-//                        Toast.makeText(LoginActivity.this, "Response body is null", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "Auto-login failed", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ServerResponse> call, Throwable t) {
-//                Toast.makeText(LoginActivity.this, "Auto-login failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 }

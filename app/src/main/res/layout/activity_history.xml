@@ -45,8 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/grey_child"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="20dp"
                     android:scrollbars="vertical"
                     tools:listitem="@layout/report_item" />
 

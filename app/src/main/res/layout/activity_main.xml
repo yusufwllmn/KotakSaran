@@ -53,18 +53,20 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_subjek"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/background_input"
-                android:drawablePadding="12dp"
-                android:hint="Masukkan subjek"
-                android:padding="12dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:textSize="14sp" />
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinner_subjek"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -97,14 +99,34 @@
                 android:textColorHint="@color/grey"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginBottom="5dp"
-                android:text="0/500"
-                android:textColor="@color/grey"
-                android:textSize="14sp" />
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/laporan_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:text="0"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:text="/500"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

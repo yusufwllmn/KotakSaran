@@ -1,6 +1,8 @@
 package com.yusuf.kotaksaran.Rest;
 
 import com.yusuf.kotaksaran.Model.Kategori;
+import com.yusuf.kotaksaran.Model.Laporan;
+import com.yusuf.kotaksaran.Model.LaporanRequest;
 import com.yusuf.kotaksaran.Model.Pelapor;
 import com.yusuf.kotaksaran.Model.ServerResponse;
 import com.yusuf.kotaksaran.Model.Subjek;
@@ -33,8 +35,12 @@ public interface ApiInterface {
     @GET("riwayat")
     Call<ServerResponse> getLaporan(@Header("Authorization") String accessToken);
 
+    @GET("laporan")
+    Call<ServerResponse> getSubjek(@Header("Authorization") String accessToken);
+
     @POST("laporan")
-    Call<ServerResponse> store(@Body List<Subjek> subjek_laporan, String isi_laporan, String dokumen);
+    Call<ServerResponse> store(@Header("Authorization") String accessToken,
+                               @Body LaporanRequest laporanRequest);
 
     @GET("profile")
     Call<ServerResponse> getPelapor(@Header("Authorization") String accessToken);

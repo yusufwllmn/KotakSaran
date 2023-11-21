@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Response body is null", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Tidak ada Response", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             if (response != null && response.errorBody() != null) {
@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ServerResponse> call, Throwable t) {
                         Log.e("RegisterError", "Registration failed", t);
-                        Toast.makeText(RegisterActivity.this, "Registration failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Periksa Koneksi Anda " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
