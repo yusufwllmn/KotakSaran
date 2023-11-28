@@ -90,8 +90,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 tvNama.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
                             }
 
-                            Kategori kategori = pelapor.getkategori();
-                            if (pelapor.getkategori() != null) {
+                            Kategori kategori = pelapor.getKategori();
+                            if (pelapor.getKategori() != null) {
                                 tvKategori.setText(kategori.getKategori());
                             } else {
                                 tvKategori.setText("Belum dilengkapi");

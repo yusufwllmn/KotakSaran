@@ -45,6 +45,9 @@ public interface ApiInterface {
     @GET("profile")
     Call<ServerResponse> getPelapor(@Header("Authorization") String accessToken);
 
+    @GET("kategori")
+    Call<ServerResponse> getKategori(@Header("Authorization") String accessToken);
+
     @PUT("profile/{id_pelapor}")
     Call<ServerResponse> update(@Path("id_pelapor") int id_pelapor, @Body Pelapor pelapor);
 }

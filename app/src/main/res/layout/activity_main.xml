@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:padding="5dp" />
 
             </LinearLayout>
 
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginBottom="5dp"
-                    android:text="0"
+                    android:text="500"
                     android:textColor="@color/grey"
                     android:textSize="14sp" />
 
@@ -151,7 +151,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/dokumen"
+                    android:id="@+id/dokumen_name"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="1"
@@ -162,6 +162,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/pick_dokumen"
                     android:layout_width="100dp"
                     android:layout_height="45dp"
                     android:background="@drawable/background_bt_file"

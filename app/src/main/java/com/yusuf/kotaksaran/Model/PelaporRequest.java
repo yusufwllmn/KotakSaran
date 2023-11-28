@@ -2,19 +2,17 @@ package com.yusuf.kotaksaran.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class Pelapor {
+public class PelaporRequest {
     private String id_pelapor;
     private String id_identitas;
     private String nama;
-    private Kategori kategori;
+    private String kategori;
     private String alamat;
     private String telephone;
     private String avatar;
     private User user;
 
-    public Pelapor(String id_pelapor, String id_identitas, String nama, Kategori kategori, String alamat, String telephone, String avatar, User user){
+    public PelaporRequest(String id_pelapor, String id_identitas, String nama, String kategori, String alamat, String telephone, String avatar, User user){
         this.id_pelapor = id_pelapor;
         this.id_identitas = id_identitas;
         this.nama = nama;
@@ -38,8 +36,8 @@ public class Pelapor {
     public void setNama(String nama) {this.nama = nama;}
 
     @SerializedName("kategori")
-    public Kategori getKategori() {return kategori;}
-    public void setKategori(Kategori kategori) {this.kategori = kategori;}
+    public String getkategori() {return kategori;}
+    public void setkategori(String kategori) {this.kategori = kategori;}
 
     @SerializedName("alamat")
     public String getAlamat() {return alamat;}

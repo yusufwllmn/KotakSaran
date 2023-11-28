@@ -58,14 +58,20 @@ public class SplashActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ServerResponse serverResponse = response.body();
                     if (serverResponse != null) {
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(i);
                         finish();
                     } else {
-                        Toast.makeText(SplashActivity.this, "Login Gagal", Toast.LENGTH_SHORT).show();
+                        authManager.clearAccessToken();
+                        Intent a = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(a);
+                        finish();
                     }
                 } else {
-                    Toast.makeText(SplashActivity.this, "Login Gagal", Toast.LENGTH_SHORT).show();
+                    authManager.clearAccessToken();
+                    Intent b = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(b);
+                    finish();
                 }
             }
 

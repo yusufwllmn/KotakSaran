@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+
 public class Laporan {
     private String id_laporan;
     private Subjek bagian;

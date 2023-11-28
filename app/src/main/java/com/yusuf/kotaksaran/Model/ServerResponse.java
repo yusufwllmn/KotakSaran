@@ -9,22 +9,61 @@ public class ServerResponse {
     private User user;
     private Pelapor pelapor;
     private List<Subjek> bagian;
+    private List<Kategori> kategori;
 
-    public List<Subjek> getBagian() {return bagian;}
-    public void setBagian(List<Subjek> bagian) {this.bagian = bagian;}
+    public List<Subjek> getBagian() {
+        return bagian;
+    }
 
-    public User getUser() {return user;}
-    public void setUser(User user) {this.user = user;}
+    public void setBagian(List<Subjek> bagian) {
+        this.bagian = bagian;
+    }
 
-    public Pelapor getPelapor() {return pelapor;}
-    public void setPelapor(Pelapor pelapor) {this.pelapor = pelapor;}
+    public User getUser() {
+        return user;
+    }
 
-    public String getMessage() {return message;}
-    public void setMessage(String message) {this.message = message;}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-    public String getToken() {return token;}
-    public void setToken(String token) {this.token = token;}
+    public Pelapor getPelapor() {
+        return pelapor;
+    }
 
-    public List<Laporan> getLaporan() {return laporan;}
-    public void setLaporan(List<Laporan> laporan) {this.laporan = laporan;}
+    public void setPelapor(Pelapor pelapor) {
+        this.pelapor = pelapor;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public List<Laporan> getLaporan() {
+        return laporan;
+    }
+
+    public void setLaporan(List<Laporan> laporan) {
+        this.laporan = laporan;
+    }
+
+    public List<Kategori> getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(List<Kategori> kategori) {
+        this.kategori = kategori;
+    }
 }
