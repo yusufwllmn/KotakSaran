@@ -43,9 +43,16 @@ public interface ApiInterface {
     @GET("laporan")
     Call<ServerResponse> getSubjek(@Header("Authorization") String accessToken);
 
+    @Multipart
     @POST("laporan")
-    Call<ServerResponse> store(@Header("Authorization") String accessToken,
-                               @Body LaporanRequest laporanRequest);
+    Call<ServerResponse> storeWithDocument(@Header("Authorization") String accessToken,
+                                           @Part MultipartBody.Part dokumen,
+                                           @Part("subjek_laporan") RequestBody subjekLaporan,
+                                           @Part("isi_laporan") RequestBody isiLaporan);
+
+    @POST("laporan")
+    Call<ServerResponse> storeWithoutDocument(@Header("Authorization") String accessToken,
+                                              @Body LaporanRequest laporanRequest);
 
     @GET("profile")
     Call<ServerResponse> getPelapor(@Header("Authorization") String accessToken);

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,12 +44,14 @@ public class EditActivity extends AppCompatActivity {
     ImageView ivBack;
     Button btnChange;
     EditText etId, etNama, etAlamat, etTelephone;
+    TextView testKategori;
     Spinner kategoriSpinner;
     Kategori kategori;
     AuthManager authManager;
     ApiInterface mApiInterface;
     List<Kategori> kategoriList;
     Pelapor pelaporCurrent;
+    private String selectedKategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,58 +69,6 @@ public class EditActivity extends AppCompatActivity {
         etNama = findViewById(R.id.et_edt_nama);
         etAlamat = findViewById(R.id.et_edt_alamat);
         etTelephone =  findViewById(R.id.et_edt_telephone);
-
-        Call<ServerResponse> kategoriCall = mApiInterface.getKategori("Bearer " + accessToken);
-        kategoriCall.enqueue(new Callback<ServerResponse>() {
-            @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                if (response.isSuccessful()) {
-                    ServerResponse serverResponse = response.body();
-                    if (serverResponse != null) {
-                        List<Kategori> kategoriList = serverResponse.getKategori();
-
-                        List<String> kategoriName = new ArrayList<>();
-                        kategoriName.add("Pilih Kategori");
-                        for (Kategori kategori : kategoriList) {
-                            kategoriName.add(kategori.getKategori());
-                        }
-
-                        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                                EditActivity.this,
-                                android.R.layout.simple_spinner_item,
-                                kategoriName
-                        );
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        kategoriSpinner.setAdapter(adapter);
-
-                        kategoriSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                                if (position > 0) {
-                                    kategori = kategoriList.get(position - 1);
-                                } else {
-                                    kategori = null ;
-                                }
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parentView) {
-                                kategori = null;
-                            }
-                        });
-                    } else {
-                        Toast.makeText(EditActivity.this, "Response body is null", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(EditActivity.this, "Gagal Memuat Subjek", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Toast.makeText(EditActivity.this, "Periksa Koneksi Anda" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         Call<ServerResponse> pelaporCall = mApiInterface.getPelapor("Bearer " + accessToken);
         pelaporCall.enqueue(new Callback<ServerResponse>() {
@@ -151,6 +102,73 @@ public class EditActivity extends AppCompatActivity {
                             } else {
                                 etTelephone.setText(null);
                             }
+
+                            if (pelapor.getId_kategori() != null) {
+                                selectedKategori = pelapor.getId_kategori();
+                            } else {
+                                selectedKategori = null;
+                            }
+
+                            Call<ServerResponse> kategoriCall = mApiInterface.getKategori("Bearer " + accessToken);
+                            kategoriCall.enqueue(new Callback<ServerResponse>() {
+                                @Override
+                                public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                                    if (response.isSuccessful()) {
+                                        ServerResponse serverResponse = response.body();
+                                        if (serverResponse != null) {
+                                            List<Kategori> kategoriList = serverResponse.getKategori();
+
+                                            List<String> kategoriName = new ArrayList<>();
+                                            kategoriName.add("Pilih Kategori");
+                                            for (Kategori kategori : kategoriList) {
+                                                kategoriName.add(kategori.getKategori());
+                                            }
+
+                                            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                                                    EditActivity.this,
+                                                    android.R.layout.simple_spinner_item,
+                                                    kategoriName
+                                            );
+                                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                            kategoriSpinner.setAdapter(adapter);
+
+                                            if (selectedKategori != null) {
+                                                for (int i = 0; i < kategoriList.size(); i++) {
+                                                    if (kategoriList.get(i).getId_kategori().equals(selectedKategori)) {
+                                                        kategoriSpinner.setSelection(i+1);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                            kategoriSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                @Override
+                                                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                                                    if (position > 0) {
+                                                        kategori = kategoriList.get(position - 1);
+                                                    } else {
+                                                        kategori = null ;
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onNothingSelected(AdapterView<?> parentView) {
+                                                    kategori = null;
+                                                }
+                                            });
+                                        } else {
+                                            Toast.makeText(EditActivity.this, "Response body is null", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        Toast.makeText(EditActivity.this, "Gagal Memuat Subjek", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ServerResponse> call, Throwable t) {
+                                    Toast.makeText(EditActivity.this, "Periksa Koneksi Anda" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } else {
                             Toast.makeText(EditActivity.this, "Data Pelapor Tidak Tersedia", Toast.LENGTH_SHORT).show();
                         }
@@ -183,7 +201,7 @@ public class EditActivity extends AppCompatActivity {
                 String id_pelapor = pelaporCurrent.getId_pelapor();
                 String id_identitas = etId.getText().toString();
                 String nama = etNama.getText().toString();
-                String kategoriSelected = kategori.getId_kategori();
+                String kategoriSelected = (kategori != null) ? kategori.getId_kategori() : null;
                 String alamat = etAlamat.getText().toString();
                 String telephone = etTelephone.getText().toString();
 

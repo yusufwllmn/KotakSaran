@@ -76,7 +76,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Toast.makeText(SplashActivity.this, "Periksa Koneksi Anda" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SplashActivity.this, "Periksa Koneksi Anda " , Toast.LENGTH_SHORT).show();
                 Intent c = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(c);
                 finish();

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.yusuf.kotaksaran.Auth.AuthManager;
 import com.yusuf.kotaksaran.Model.Kategori;
 import com.yusuf.kotaksaran.Model.Laporan;
@@ -33,6 +37,7 @@ import retrofit2.Response;
 public class ProfileActivity extends AppCompatActivity {
     LinearLayout navHistory, navReport;
     TextView tvEdit, tvEmail, tvId, tvPassword, tvNama, tvKategori, tvAlamat, tvTelephone;
+    ImageView ivAvatar;
     Button btnLogout;
 
     ApiInterface mApiInterface;
@@ -57,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvKategori = findViewById(R.id.tv_p_kategori);
         tvAlamat = findViewById(R.id.tv_p_alamat);
         tvTelephone = findViewById(R.id.tv_p_telephone);
+        ivAvatar = findViewById(R.id.img_p_avatar);
 
         Call<ServerResponse> pelaporCall = mApiInterface.getPelapor("Bearer " + accessToken);
         pelaporCall.enqueue(new Callback<ServerResponse>() {
@@ -110,6 +116,14 @@ public class ProfileActivity extends AppCompatActivity {
                                 tvTelephone.setText("Belum dilengkapi");
                                 tvTelephone.setTextColor(ContextCompat.getColor(ProfileActivity.this, R.color.orange));
                             }
+
+                            String avatar = pelapor.getAvatar();
+                            if (avatar != null && !avatar.isEmpty()) {
+                                Glide.with(ProfileActivity.this).load(avatar).apply(new RequestOptions()).into(ivAvatar);
+                            } else {
+                                ivAvatar.setVisibility(View.GONE);
+                            }
+
                         } else {
                             Toast.makeText(ProfileActivity.this, "Data Pelapor Tidak Tersedia", Toast.LENGTH_SHORT).show();
                         }
@@ -162,7 +176,7 @@ public class ProfileActivity extends AppCompatActivity {
                         if (response != null && response.isSuccessful()) {
                             authManager.clearAccessToken();
                             Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                            Toast.makeText(ProfileActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                             finish();
                         } else {

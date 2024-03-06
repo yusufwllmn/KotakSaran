@@ -10,8 +10,8 @@
     tools:context=".SplashActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="@color/teal">
 
@@ -20,14 +20,10 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="e-kosan"
-                android:textStyle="normal"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
-
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/icon" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

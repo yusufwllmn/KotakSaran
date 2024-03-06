@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                         if (response != null && response.isSuccessful()) {
                             if (response.body() != null) {
-                                Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Berhasil Daftar", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();

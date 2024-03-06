@@ -78,10 +78,22 @@
                     android:gravity="center"
                     android:paddingVertical="10dp">
 
-                    <ImageView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/background_logo"/>
+                        android:layout_gravity="center_horizontal"
+                        app:cardCornerRadius="75dp">
+
+                        <ImageView
+                            android:id="@+id/img_p_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/background_logo" />
+
+                    </androidx.cardview.widget.CardView>
+
 
                     <TextView
                         android:layout_width="wrap_content"

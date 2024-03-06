@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (response != null && response.isSuccessful()) {
                             if (response.body() != null) {
                                 authManager.saveAccessToken(response.body().getToken());
-                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();

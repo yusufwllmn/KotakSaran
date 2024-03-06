@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Riwayat aspirasi"
+            android:text="Riwayat Aspirasi"
             android:textStyle="normal"
             android:textColor="@color/black"
             android:layout_weight="1"
@@ -35,20 +35,20 @@
         android:layout_height="1dp"
         android:background="@color/grey_teenage"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/grey_child"
-                    android:scrollbars="vertical"
-                    tools:listitem="@layout/report_item" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey_child"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/report_item" />
 
-            </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

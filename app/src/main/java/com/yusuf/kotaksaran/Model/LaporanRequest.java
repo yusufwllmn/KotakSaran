@@ -11,10 +11,10 @@ public class LaporanRequest {
     private String isi_laporan;
     private String tanggal_lapor;
     private Status status;
-    private RequestBody dokumen;
+    private String dokumen;
     private User user;
 
-    public LaporanRequest(String id_laporan, String subjek_laporan, String isi_laporan, String tanggal_lapor, Status status, RequestBody dokumen, User user){
+    public LaporanRequest(String id_laporan, String subjek_laporan, String isi_laporan, String tanggal_lapor, Status status, String dokumen, User user){
         this.id_laporan = id_laporan;
         this.subjek_laporan = subjek_laporan;
         this.isi_laporan= isi_laporan;
@@ -45,8 +45,8 @@ public class LaporanRequest {
     public void setStatus(Status status) {this.status = status;}
 
     @SerializedName("dokumen")
-    public RequestBody getDokumen() {return dokumen;}
-    public void setDokumen(RequestBody dokumen) {this.dokumen = dokumen;}
+    public String getDokumen() {return dokumen;}
+    public void setDokumen(String dokumen) {this.dokumen = dokumen;}
 
     @SerializedName("user")
     public User getUser() {return user;}

@@ -24,6 +24,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yusuf.kotaksaran.Auth.AuthManager;
 import com.yusuf.kotaksaran.Model.LaporanRequest;
 import com.yusuf.kotaksaran.Model.ServerResponse;
@@ -163,13 +165,12 @@ public class MainActivity extends AppCompatActivity {
 
                 String subjek_laporan = bagian.getId_bagian();
                 String isi_laporan = isiLaporan.getText().toString();
-                RequestBody dokumen = null;
+                MultipartBody.Part dokumenPart = null;
 
                 if(!TextUtils.isEmpty(mediaPath)){
                     File file = new File(mediaPath);
                     RequestBody fileRequestBody = RequestBody.create(MediaType.parse("*/*"), file);
-                    MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("dokumen", file.getName(), fileRequestBody);
-                    dokumen  = RequestBody.create(MediaType.parse("text/plain"), file.getName());
+                    dokumenPart = MultipartBody.Part.createFormData("dokumen", file.getName(), fileRequestBody);
                 }
 
                 if (TextUtils.isEmpty(isi_laporan)) {
@@ -177,8 +178,15 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                LaporanRequest laporanRequest = new LaporanRequest(null, subjek_laporan, isi_laporan, null, null, dokumen, null);
-                Call<ServerResponse> laporanCall = mApiInterface.store("Bearer " + accessToken, laporanRequest);
+                LaporanRequest laporanRequest = new LaporanRequest(null, subjek_laporan, isi_laporan, null, null, null, null);
+                RequestBody subjekLaporanBody = RequestBody.create(MediaType.parse("text/plain"), subjek_laporan);
+                RequestBody isiLaporanBody = RequestBody.create(MediaType.parse("text/plain"), isi_laporan);
+                Call<ServerResponse> laporanCall;
+                if (dokumenPart != null) {
+                    laporanCall = mApiInterface.storeWithDocument("Bearer " + accessToken, dokumenPart, subjekLaporanBody, isiLaporanBody);
+                } else {
+                    laporanCall = mApiInterface.storeWithoutDocument("Bearer " + accessToken, laporanRequest);
+                }
 
                 laporanCall.enqueue(new Callback<ServerResponse>() {
                     @Override
