@@ -44,7 +44,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     LinearLayout navHistory, navProfile;
     EditText isiLaporan;
     TextView tvDokumen, laporanCount, tvPickDokumen;
@@ -164,12 +163,13 @@ public class MainActivity extends AppCompatActivity {
 
                 String subjek_laporan = bagian.getId_bagian();
                 String isi_laporan = isiLaporan.getText().toString();
-                MultipartBody.Part dokumen = null;
+                RequestBody dokumen = null;
 
-                if (!TextUtils.isEmpty(mediaPath)) {
+                if(!TextUtils.isEmpty(mediaPath)){
                     File file = new File(mediaPath);
-                    RequestBody fileRequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                    dokumen = MultipartBody.Part.createFormData("dokumen", file.getName(), fileRequestBody);
+                    RequestBody fileRequestBody = RequestBody.create(MediaType.parse("*/*"), file);
+                    MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("dokumen", file.getName(), fileRequestBody);
+                    dokumen  = RequestBody.create(MediaType.parse("text/plain"), file.getName());
                 }
 
                 if (TextUtils.isEmpty(isi_laporan)) {

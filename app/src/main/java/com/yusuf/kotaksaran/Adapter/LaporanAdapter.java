@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.yusuf.kotaksaran.Model.Status;
 import com.yusuf.kotaksaran.Model.Subjek;
@@ -106,14 +110,16 @@ public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.ListView
         TextView tvDetIsi = view.findViewById(R.id.tv_det_isi);
         tvDetIsi.setText(laporan.getIsi_laporan());
 
-        TextView tvDetDokumen = view.findViewById(R.id.tv_det_dokumen);
+        ImageView imgDetDokumen = view.findViewById(R.id.img_det_dokumen);
         String dokumen = laporan.getDokumen();
         if (dokumen != null && !dokumen.isEmpty()) {
-            tvDetDokumen.setText(dokumen);
+            Glide.with(context)
+                    .load(dokumen)
+                    .apply(new RequestOptions().override(480, Target.SIZE_ORIGINAL))
+                    .into(imgDetDokumen);
         } else {
-            tvDetDokumen.setVisibility(View.GONE);
+            imgDetDokumen.setVisibility(View.GONE);
         }
-
         bottomSheetDialog.show();
     }
 

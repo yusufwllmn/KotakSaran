@@ -2,6 +2,8 @@ package com.yusuf.kotaksaran;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,22 +18,28 @@ import androidx.core.content.ContextCompat;
 
 import com.yusuf.kotaksaran.Auth.AuthManager;
 import com.yusuf.kotaksaran.Model.Kategori;
+import com.yusuf.kotaksaran.Model.LaporanRequest;
 import com.yusuf.kotaksaran.Model.Pelapor;
+import com.yusuf.kotaksaran.Model.PelaporRequest;
 import com.yusuf.kotaksaran.Model.ServerResponse;
 import com.yusuf.kotaksaran.Model.Subjek;
 import com.yusuf.kotaksaran.Model.User;
 import com.yusuf.kotaksaran.Rest.ApiClient;
 import com.yusuf.kotaksaran.Rest.ApiInterface;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditActivity extends AppCompatActivity {
-
     ImageView ivBack;
     Button btnChange;
     EditText etId, etNama, etAlamat, etTelephone;
@@ -40,6 +48,7 @@ public class EditActivity extends AppCompatActivity {
     AuthManager authManager;
     ApiInterface mApiInterface;
     List<Kategori> kategoriList;
+    Pelapor pelaporCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +127,7 @@ public class EditActivity extends AppCompatActivity {
                     ServerResponse serverResponse = response.body();
                     if (serverResponse != null) {
                         Pelapor pelapor = serverResponse.getPelapor();
+                        pelaporCurrent = pelapor;
                         if (pelapor != null) {
                             if (pelapor.getId_identitas() != null) {
                                 etId.setText(pelapor.getId_identitas());
@@ -128,24 +138,6 @@ public class EditActivity extends AppCompatActivity {
                                 etNama.setText(pelapor.getNama());
                             } else {
                                 etNama.setText(null);
-                            }
-
-                            if (pelapor.getKategori() != null) {
-                                Kategori selectedKategori = pelapor.getKategori();
-                                String selectedKategoriId = selectedKategori.getId_kategori();
-
-                                if (selectedKategoriId != null) {
-                                    int selectedPosition = -1;
-                                    for (int i = 0; i < kategoriList.size(); i++) {
-                                        if (selectedKategoriId.equals(kategoriList.get(i).getId_kategori())) {
-                                            selectedPosition = i;
-                                            break;
-                                        }
-                                    }
-                                    if (selectedPosition != -1) {
-                                        kategoriSpinner.setSelection(selectedPosition);
-                                    }
-                                }
                             }
 
                             if (pelapor.getAlamat() != null) {
@@ -188,9 +180,58 @@ public class EditActivity extends AppCompatActivity {
         btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent b = new Intent(EditActivity.this, ProfileActivity.class);
-                startActivity(b);
-                finish();
+                String id_pelapor = pelaporCurrent.getId_pelapor();
+                String id_identitas = etId.getText().toString();
+                String nama = etNama.getText().toString();
+                String kategoriSelected = kategori.getId_kategori();
+                String alamat = etAlamat.getText().toString();
+                String telephone = etTelephone.getText().toString();
+
+                if (TextUtils.isEmpty(id_identitas)) {
+                    Toast.makeText(EditActivity.this, "Isi ID", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(id_identitas)) {
+                    Toast.makeText(EditActivity.this, "Isi Nama", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                PelaporRequest pelaporRequest = new PelaporRequest(id_pelapor,id_identitas, nama, kategoriSelected,alamat , telephone);
+                Call<ServerResponse> laporanCall = mApiInterface.update(id_pelapor, "Bearer " + accessToken, pelaporRequest);
+
+                laporanCall.enqueue(new Callback<ServerResponse>() {
+                    @Override
+                    public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                        if (response != null && response.isSuccessful()) {
+                            if (response.body() != null) {
+                                Toast.makeText(EditActivity.this, "Edit Berhasil", Toast.LENGTH_SHORT).show();
+                                Intent a = new Intent(EditActivity.this, ProfileActivity.class);
+                                startActivity(a);
+                                finish();
+                            } else {
+                                Toast.makeText(EditActivity.this, "Response body is null", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            if (response != null && response.errorBody() != null) {
+                                try {
+                                    String errorBody = response.errorBody().string();
+                                    Log.e("LoginError", "Error response body: " + errorBody);
+                                    Toast.makeText(EditActivity.this, errorBody, Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Toast.makeText(EditActivity.this, "Update gagal", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ServerResponse> call, Throwable t) {
+                        Toast.makeText(EditActivity.this, "Periksa Koneksi Anda" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

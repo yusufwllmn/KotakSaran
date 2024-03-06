@@ -25,7 +25,7 @@ public class Pelapor {
         this.user = user;
     }
 
-    @SerializedName("id_laporan")
+    @SerializedName("id_pelapor")
     public String getId_pelapor() {return id_pelapor;}
     public void setId_pelapor(String id_pelapor) {this.id_pelapor = id_pelapor;}
 

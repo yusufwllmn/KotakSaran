@@ -31,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
-
     LinearLayout navHistory, navReport;
     TextView tvEdit, tvEmail, tvId, tvPassword, tvNama, tvKategori, tvAlamat, tvTelephone;
     Button btnLogout;

@@ -29,9 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HistoryActivity extends AppCompatActivity {
-
     LinearLayout navReport, navProfile;
-
     ApiInterface mApiInterface;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -103,5 +101,4 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
     }
-
 }
